@@ -13,6 +13,8 @@ args = parser.parse_args()
 # Define command tokens
 vie = '%' # vie = variable in echo
 mws = '"' # mws = multi word string
+
+# Prefixes
 functionPrefix = '!'
 variablePrefix = '.'
 filePrefix = '.'
