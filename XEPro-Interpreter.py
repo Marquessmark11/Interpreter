@@ -1,20 +1,17 @@
-
 import argparse as ap
 import time
 
 # Define arguments
 parser = ap.ArgumentParser(description='An interpreter for XEPro')
-parser.add_argument('-v', action='store_true')
-parser.add_argument('-d', action='store_true')
-parser.add_argument('-nc', action='store_true')
-parser.add_argument('file', type=ap.FileType('r'))
+parser.add_argument('-v', action='store_true', help='Verbose mode, says what commands it finds and what its doing.')
+parser.add_argument('-d', action='store_true', help='Debug mode, displays the contents of the file as well as what the interpreter reads.')
+parser.add_argument('-nc', action='store_true', help='Does not say "Completed running code!" after completing executing code.')
+parser.add_argument('file', type=ap.FileType('r'), help='The file that the XEPro interpreter executes.')
 args = parser.parse_args()
 
 # Define command tokens
 vie = '%' # vie = variable in echo
 mws = '"' # mws = multi word string
-
-# Prefixes
 functionPrefix = '!'
 variablePrefix = '.'
 filePrefix = '.'
@@ -100,7 +97,7 @@ class XEPro_Interpreter:
                         print(f'[XEPro {version}] Found append file command, appending to {content[x+1]}')
                     a.write(content[x+2])
                     a.close()
-                    
+
             if content[x].startswith(f'{filePrefix}DeleteFile'):
                 import os
                 os.remove(f'./{content[x+1]}')
@@ -166,8 +163,7 @@ class XEPro_Interpreter:
                 y = 2**(x-1)-1
                 print(y)
 
-    if not args.nc:
-        print('Completed running code!')
-
 interpreter = XEPro_Interpreter()
 interpreter.run(content)
+if not args.nc:
+    print('Completed running code!')
