@@ -1,0 +1,9 @@
+.Echo "some math"
+,Math 1 + 1
+,Math 1 / 2
+,Math 6 / 3
+Wait 2
+,GetIntLimit 64
+,GetIntLimit 32
+,Pow 3 2
+,Mod 600000000 32767
