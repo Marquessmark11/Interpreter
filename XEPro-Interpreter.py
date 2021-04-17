@@ -53,6 +53,8 @@ class XEPro_Interpreter:
             if content[x].startswith('FILLER_DO_NOT_USE_EMPTY'):
                 if args.v:
                     print(f'[XEPro {version}] Filler detected. Skipping.')
+           
+            # shitty if statements, will fix later
 
             if content[x].startswith(f'{consolePrefix}Echo'):
                 import os
